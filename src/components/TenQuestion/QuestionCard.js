@@ -16,15 +16,15 @@ const QuestionCard = ({question}) => {
 
     const displayList = (array) => {
       return array.map( (answer) => {
-        return <button type="button">{answer}</button>
+        return <div className="card__answer">{answer}</div>
       })
     }
 
     if(question.type === "multiple") {
       return(
-        <div>
-          <div>{he.decode(question.question)}</div>
-          <div>
+        <div className="card">
+          <div className="card__question">{he.decode(question.question)}</div>
+          <div className="card__answer-list">
             {shuffle(displayList(answerList))}
           </div>
 
@@ -38,9 +38,9 @@ const QuestionCard = ({question}) => {
 
     if(question.type === "boolean") {
       return(
-        <div>
-          <div>{question.question}</div>
-          <div>
+        <div className="card">
+          <div className="card__question">{question.question}</div>
+          <div className="card__answer-list">
             {displayList(booleanList)}
           </div>
           <br />

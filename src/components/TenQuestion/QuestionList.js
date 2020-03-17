@@ -10,7 +10,7 @@ const QuestionList = ({list}) => {
       return <QuestionCard question={question} key={question.question}/>
     })
     return(
-        <div>
+        <div className="list-section">
           {displayList}
         </div>
     );
