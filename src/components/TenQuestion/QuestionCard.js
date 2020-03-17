@@ -1,5 +1,7 @@
 import React from 'react';
+import he from 'he';
 
+//shuffle the array
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
@@ -21,9 +23,13 @@ const QuestionCard = ({question}) => {
     if(question.type === "multiple") {
       return(
         <div>
-          <div>{question.question}</div>
+          <div>{he.decode(question.question)}</div>
           <div>
             {shuffle(displayList(answerList))}
+          </div>
+
+          <div>
+            Cheat: {question.correct_answer}
           </div>
           <br />
         </div>
