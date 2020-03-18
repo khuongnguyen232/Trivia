@@ -24,7 +24,7 @@
     display: inline-block;
     width: 40%;
 
-    background: linear-gradient(to right, white 50%, black 50%);
+    background: linear-gradient(to right, $color-white 50%, $color-black 50%);
     background-size: 200% 100%;
     background-position: right bottom;
     transition: all .3s ease-out;
@@ -42,5 +42,20 @@
       background-position: left bottom;
       color: $color-black;
     }
+
+
+    &--false {
+      background: $color-red;
+      color:$color-black;
+    }
+
+    &--true {
+      background: $color-green;
+      color:$color-black;
+    }
   }
+}
+
+.red {
+  background-color: red !important;
 }
