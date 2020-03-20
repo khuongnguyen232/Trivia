@@ -43,6 +43,10 @@
       color: $color-black;
     }
 
+    &:disabled {
+      cursor: no-drop;
+      pointer-events: all !important;
+    }
 
     &--false {
       background: $color-red;

@@ -17,12 +17,14 @@ class QuestionCard extends React.Component {
 
   checkAnswer= (event) => {
     if(event.target.textContent === he.decode(this.props.question.correct_answer)) {
-      event.target.className = 'card__answer card__answer--true';
+      event.target.className += ' card__answer--true';
+      this.props.addScore();
     } else {
-      event.target.className = 'card__answer card__answer--false';
+      event.target.className += ' card__answer--false';
     }
     this.setState({isAnswered:true});
-  }
+  };
+
 
   render() {
     const {question} = this.props;
@@ -31,7 +33,12 @@ class QuestionCard extends React.Component {
     } else {
       const displayList = (array) => {
         return array.map( (answer) => {
-          return <button key={answer} className="card__answer" onClick={this.checkAnswer}>{he.decode(answer)}</button>
+          if(!this.state.isAnswered) {
+            return <button key={answer} className="card__answer" onClick={this.checkAnswer}>{he.decode(answer)}</button>
+          }
+          else {
+            return <button key={answer} className="card__answer" disabled onClick={this.checkAnswer}>{he.decode(answer)}</button>
+          }
         })
       }
 
@@ -46,7 +53,7 @@ class QuestionCard extends React.Component {
             { //display answer after click buttons
               this.state.isAnswered? (
                 <div>
-                  Cheat: {question.correct_answer}
+                  Answer: {he.decode(question.correct_answer)}
                 </div>
               ):<React.Fragment></React.Fragment>
             }
@@ -66,7 +73,7 @@ class QuestionCard extends React.Component {
             { //display answer after click buttons
               this.state.isAnswered? (
                 <div>
-                  Cheat: {question.correct_answer}
+                  Answer: {he.decode(question.correct_answer)}
                 </div>
               ):<React.Fragment></React.Fragment>
             }

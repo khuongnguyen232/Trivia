@@ -2,9 +2,10 @@ import React from 'react';
 import APIs from '../api';
 
 import QuestionList from './QuestionList';
+import ScoreBoard from '../Score/ScoreBoard';
 
 class TenQuestionContent extends React.Component {
-  state= {questions:[]};
+  state= {questions:[], score:0};
 
   getQuestions = async () => {
     try {
@@ -23,6 +24,10 @@ class TenQuestionContent extends React.Component {
     }
   }
 
+  addScore = () => {
+    this.setState({score:this.state.score + 1});
+  }
+
   componentDidMount() {
     this.getQuestions();
   }
@@ -30,7 +35,8 @@ class TenQuestionContent extends React.Component {
   render() {
     return(
       <div>
-        <QuestionList list={this.state.questions}/>
+        <ScoreBoard score={this.state.score}/>
+        <QuestionList list={this.state.questions} addScore={this.addScore}/>
       </div>
     );
   };

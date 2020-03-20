@@ -1,0 +1,15 @@
+.score__section {
+  top: 0;
+  position: fixed;
+  width:100%;
+  text-align: center;
+  background-image: linear-gradient(to left, $color-pewter, $color-black);
+  z-index: 1;
+}
+
+.score__title {
+  font-size:3em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}

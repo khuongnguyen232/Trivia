@@ -4,5 +4,7 @@
 @import "base/variable";
 @import "base/spinner";
 
-@import "question/_tenquestion";
+@import "question/tenquestion";
 @import "question/question_card";
+
+@import "score/score";
