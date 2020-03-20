@@ -3,7 +3,8 @@
   position: fixed;
   width:100%;
   text-align: center;
-  background-image: linear-gradient(to left, $color-pewter, $color-black);
+  color:$color-white;
+  background-image: url('../static/star.jpg');
   z-index: 1;
 }
 

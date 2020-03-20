@@ -6,11 +6,12 @@
   border-radius: 5px;
 
   width: 50%;
-  background-color: $color-pewter;
+  color:$color-pewter;
+  background-image:url('../static/starbackground.jpg');
   margin:2% auto;
 
   &__question {
-    border-bottom: 1px dotted $color-black;
+    border-bottom: 1px dotted $color-white;
     padding: 10px;
   }
 
