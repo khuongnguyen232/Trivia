@@ -27,21 +27,22 @@ class TenQuestionContent extends React.Component {
     }
   }
 
-  addScore = () => {
-    this.setState({score:this.state.score + 1});
+  //input will be a text for which difficulty to load (easy, medium, hard)
+  changeDifficulty = (event) => {
+    //console.log(event.target.value);
+    this.setState({difficulty:event.target.value});
   }
 
 
-
-  componentDidMount() {
-    this.getQuestions();
+  addScore = () => {
+    this.setState({score:this.state.score + 1});
   }
 
   render() {
     return(
       <div>
         <ScoreBoard score={this.state.score}/>
-        <Menu />
+        <Menu getQuestions={this.getQuestions} changeDifficulty={this.changeDifficulty}/>
         <QuestionList list={this.state.questions} addScore={this.addScore}/>
       </div>
     );
