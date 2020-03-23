@@ -2,22 +2,25 @@ import React from 'react';
 import APIs from '../api';
 
 import QuestionList from './QuestionList';
-import ScoreBoard from '../Score/ScoreBoard';
+import ScoreBoard from './ScoreBoard';
+import Menu from './Menu';
 
 class TenQuestionContent extends React.Component {
-  state= {questions:[], score:0};
+  //only display question when isSubmit is true
+  state= {questions:[], score:0,difficulty:null,isSubmit:false};
 
   getQuestions = async () => {
     try {
       const response = await APIs.get('./', {
         params: {
-          amount:10
+          amount:10,
+          difficulty:this.state.difficulty
         }
       });
 
       //check if response is successful
       if(response.status === 200) {
-        this.setState({questions:response.data.results})
+        this.setState({questions:response.data.results,isSubmit:true})
       }
     } catch (err) {
       console.log(err);
@@ -28,6 +31,8 @@ class TenQuestionContent extends React.Component {
     this.setState({score:this.state.score + 1});
   }
 
+
+
   componentDidMount() {
     this.getQuestions();
   }
@@ -36,6 +41,7 @@ class TenQuestionContent extends React.Component {
     return(
       <div>
         <ScoreBoard score={this.state.score}/>
+        <Menu />
         <QuestionList list={this.state.questions} addScore={this.addScore}/>
       </div>
     );

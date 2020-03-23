@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 
 //shuffle the array
 function shuffle(array) {
@@ -7,12 +8,11 @@ function shuffle(array) {
 
 function convert(str)
 {
-  str = str.replace(new RegExp("&amp;",'g'),'&');
-  str = str.replace(new RegExp("&gt;",'g'),'>');
-  str = str.replace(new RegExp("&lt;",'g'),'<');
-  str = str.replace(new RegExp('&quot;', 'g'),'"');
   str = str.replace(new RegExp("&#039;",'g'),"'");
-  return str;
+  str = str.replace(new RegExp("&ldquo;",'g'),"“");
+  str = str.replace(new RegExp("&rdquo;",'g'),"”");
+
+  return _.unescape(str);
 }
 
 class QuestionCard extends React.Component {
@@ -74,7 +74,7 @@ class QuestionCard extends React.Component {
       if(question.type === "boolean") {
         return(
           <div className="card">
-            <div className="card__question">{question.question}</div>
+            <div className="card__question">{convert(question.question)}</div>
             <div className="card__answer-list">
               {displayList(this.state.booleanList)}
             </div>
