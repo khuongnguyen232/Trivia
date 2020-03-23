@@ -1,9 +1,18 @@
 import React from 'react';
-import he from 'he';
 
 //shuffle the array
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
+}
+
+function convert(str)
+{
+  str = str.replace(new RegExp("&amp;",'g'),'&');
+  str = str.replace(new RegExp("&gt;",'g'),'>');
+  str = str.replace(new RegExp("&lt;",'g'),'<');
+  str = str.replace(new RegExp('&quot;', 'g'),'"');
+  str = str.replace(new RegExp("&#039;",'g'),"'");
+  return str;
 }
 
 class QuestionCard extends React.Component {
@@ -16,7 +25,7 @@ class QuestionCard extends React.Component {
   }
 
   checkAnswer= (event) => {
-    if(event.target.textContent === he.decode(this.props.question.correct_answer)) {
+    if(event.target.textContent === convert(this.props.question.correct_answer)) {
       event.target.className += ' card__answer--true';
       this.props.addScore();
     } else {
@@ -34,10 +43,10 @@ class QuestionCard extends React.Component {
       const displayList = (array) => {
         return array.map( (answer) => {
           if(!this.state.isAnswered) {
-            return <button key={answer} className="card__answer" onClick={this.checkAnswer}>{he.decode(answer)}</button>
+            return <button key={answer} className="card__answer" onClick={this.checkAnswer}>{convert(answer)}</button>
           }
           else {
-            return <button key={answer} className="card__answer" disabled onClick={this.checkAnswer}>{he.decode(answer)}</button>
+            return <button key={answer} className="card__answer" disabled onClick={this.checkAnswer}>{convert(answer)}</button>
           }
         })
       }
@@ -45,7 +54,7 @@ class QuestionCard extends React.Component {
       if(question.type === "multiple") {
         return(
           <div className="card">
-            <div className="card__question">{he.decode(question.question)}</div>
+            <div className="card__question">{convert(question.question)}</div>
             <div className="card__answer-list">
               {displayList(this.state.answerList)}
             </div>
@@ -53,7 +62,7 @@ class QuestionCard extends React.Component {
             { //display answer after click buttons
               this.state.isAnswered? (
                 <div>
-                  Answer: {he.decode(question.correct_answer)}
+                  Answer: {convert(question.correct_answer)}
                 </div>
               ):<React.Fragment></React.Fragment>
             }
@@ -73,7 +82,7 @@ class QuestionCard extends React.Component {
             { //display answer after click buttons
               this.state.isAnswered? (
                 <div>
-                  Answer: {he.decode(question.correct_answer)}
+                  Answer: {convert(question.correct_answer)}
                 </div>
               ):<React.Fragment></React.Fragment>
             }
