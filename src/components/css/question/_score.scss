@@ -1,7 +1,6 @@
 .score__section {
   top: 0;
   left:0;
-  height: 5em;
   position: fixed;
   width:100%;
   text-align: center;
@@ -10,9 +9,17 @@
   z-index: 1;
 }
 
-.score__title {
-  font-size:3em;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+.score{
+
+  &__title {
+    font-size:3em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0;
+  }
+
+  &__description {
+    font-size:2em;
+  }
 }

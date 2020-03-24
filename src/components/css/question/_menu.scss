@@ -1,12 +1,28 @@
 .menu__section {
   top:0;
   width:100%;
-  margin-bottom: -4em;
-  margin-top: 5em;
-  background-color: red;
+  padding-top: 8rem;
+  margin-bottom: 2rem;
 }
 
-.menu > button:focus {
-    background-color: gray;
-    outline: none;
+.menu {
+  &__label {
+    font-size: 1.5rem;
+    display: inline-block;
+    padding: 1rem 0;
+    margin: 0 1rem;
   }
+}
+
+.btn-group {
+  .btn {
+    width: 6rem;
+    text-align: center;
+    transform: all .2s;
+    
+    &:focus {
+      background-color: $color-white;
+      color: $color-black;
+    }
+  }
+}

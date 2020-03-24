@@ -5,7 +5,7 @@ import QuestionList from './QuestionList';
 import ScoreBoard from './ScoreBoard';
 import Menu from './Menu';
 
-class TenQuestionContent extends React.Component {
+class Questions extends React.Component {
   //only display question when isSubmit is true
   state= {questions:[], score:0,difficulty:null,isSubmit:false};
 
@@ -20,7 +20,7 @@ class TenQuestionContent extends React.Component {
 
       //check if response is successful
       if(response.status === 200) {
-        this.setState({questions:response.data.results,isSubmit:true})
+        this.setState({questions:response.data.results,isSubmit:true,score:0})
       }
     } catch (err) {
       console.log(err);
@@ -40,7 +40,7 @@ class TenQuestionContent extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="Ten">
         <ScoreBoard score={this.state.score}/>
         <Menu getQuestions={this.getQuestions} changeDifficulty={this.changeDifficulty}/>
         <QuestionList list={this.state.questions} addScore={this.addScore}/>
@@ -49,4 +49,4 @@ class TenQuestionContent extends React.Component {
   };
 };
 
-export default TenQuestionContent;
+export default Questions;

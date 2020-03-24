@@ -1,11 +1,11 @@
 import React from 'react';
 
-import TenQuestion from './components/TenQuestion/TenQuestionContent';
+import Questions from './components/Questions/Questions';
 
 function App() {
   return (
     <div className="App">
-      <TenQuestion />
+      <Questions />
     </div>
   );
 }

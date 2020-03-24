@@ -4,7 +4,9 @@
 @import "base/variable";
 @import "base/spinner";
 
-@import "question/tenquestion";
+@import "question/questions";
 @import "question/question_card";
 @import "question/score";
 @import "question/menu";
+
+@import "node_modules/bootstrap/scss/bootstrap";
