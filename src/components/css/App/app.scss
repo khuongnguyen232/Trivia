@@ -1,4 +1,7 @@
-.app-section {
-  height: 100vh;
-  background-color: gray;
+.App {
+  min-height: 100vh;
+  background-image:url('../static/lightbackground.jpg');
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: center;
 }

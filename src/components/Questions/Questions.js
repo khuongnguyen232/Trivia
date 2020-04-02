@@ -40,7 +40,7 @@ class Questions extends React.Component {
 
   render() {
     return(
-      <div className="Ten">
+      <div className="App">
         <ScoreBoard score={this.state.score}/>
         <Menu getQuestions={this.getQuestions} changeDifficulty={this.changeDifficulty}/>
         <QuestionList list={this.state.questions} addScore={this.addScore}/>

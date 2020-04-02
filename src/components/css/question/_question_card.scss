@@ -8,7 +8,12 @@
   width: 50%;
   color:$color-pewter;
   background-image:url('../static/starbackground.jpg');
-  margin:2% auto;
+
+  //the last element doesn't need 2% margin,(but still need to center);
+  margin: 0 auto;
+  &:not(:last-child){
+    margin:2% auto;
+  }
 
   &__question {
     border-bottom: 1px dotted $color-white;

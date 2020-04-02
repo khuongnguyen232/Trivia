@@ -2,7 +2,7 @@
   top:0;
   width:100%;
   padding-top: 8rem;
-  margin-bottom: 2rem;
+  display: block;
 }
 
 .menu {
@@ -19,7 +19,7 @@
     width: 6rem;
     text-align: center;
     transform: all .2s;
-    
+
     &:focus {
       background-color: $color-white;
       color: $color-black;
