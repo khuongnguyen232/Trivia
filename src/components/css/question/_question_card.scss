@@ -1,5 +1,5 @@
 .card {
-  font-size: 2.5em;
+  font-size: 2.5rem;
   font-weight: bold;
 
   border:1px solid $color-black;
@@ -15,6 +15,10 @@
     margin:2% auto;
   }
 
+  @include respond(tab-land) {
+    width: 100%;
+  }
+
   &__question {
     border-bottom: 1px dotted $color-white;
     padding: 10px;
@@ -22,13 +26,17 @@
 
   &__answer-list {
     position: relative;
-    padding: 1em;
+    padding: 1rem;
   }
 
   &__answer {
-    font-size: 1em;
+    font-size: 2rem;
     display: inline-block;
     width: 40%;
+
+    @include respond(tab-land) {
+      font-size: 1.5rem;
+    }
 
     background: linear-gradient(to right, $color-white 50%, $color-black 50%);
     background-size: 200% 100%;
@@ -40,8 +48,14 @@
     border-radius: 3px;
     box-shadow: 1px 2px $color-gray;
 
-    margin: 1em;
-    padding: 1em;
+    margin: 1rem;
+    padding: 1rem;
+
+    @include respond(tab-land) {
+      margin: .5rem 0;
+      width: 100%;
+      display: block;
+    }
 
     &:hover {
       cursor: pointer;
