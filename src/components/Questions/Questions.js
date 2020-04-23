@@ -39,13 +39,16 @@ class Questions extends React.Component {
   }
 
   render() {
-    return(
-      <div className="App">
-        <ScoreBoard score={this.state.score}/>
-        <Menu getQuestions={this.getQuestions} changeDifficulty={this.changeDifficulty}/>
-        <QuestionList list={this.state.questions} addScore={this.addScore}/>
-      </div>
-    );
+      return (
+        <div className="App">
+          <ScoreBoard score={this.state.score}/>
+          <Menu getQuestions={this.getQuestions} changeDifficulty={this.changeDifficulty}/>
+          {this.state.isSubmit?
+            <QuestionList list={this.state.questions} addScore={this.addScore}/>:
+            <div className="init-message">Please choose a difficulty and click "Load Questions" button to see the questions</div>
+          }
+        </div>
+    )
   };
 };
 

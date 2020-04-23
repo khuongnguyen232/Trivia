@@ -6,6 +6,7 @@ function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
 
+//use to convert special character to sign - exmaple: &ldquo; => “
 function convert(str)
 {
   str = str.replace(new RegExp("&#039;",'g'),"'");
