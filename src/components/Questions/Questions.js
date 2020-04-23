@@ -45,7 +45,7 @@ class Questions extends React.Component {
           <Menu getQuestions={this.getQuestions} changeDifficulty={this.changeDifficulty}/>
           {this.state.isSubmit?
             <QuestionList list={this.state.questions} addScore={this.addScore}/>:
-            <div className="init-message">Please choose a difficulty and click "Load Questions" button to see the questions</div>
+            <div className="init-message">Please choose a difficulty and click "Load Questions" button to see the questions. Enjoy!</div>
           }
         </div>
     )

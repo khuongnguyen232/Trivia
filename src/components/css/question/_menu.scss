@@ -5,6 +5,11 @@
   display: block;
 }
 
+.menu__load {
+  transform: scale(1.2);
+  margin-left: 2rem;
+}
+
 .menu {
   &__label {
     font-size: 1.5rem;
@@ -15,6 +20,7 @@
 }
 
 .btn-group {
+  margin-left: 2rem;
   .btn {
     width: 6rem;
     text-align: center;
