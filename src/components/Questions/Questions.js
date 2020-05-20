@@ -17,13 +17,12 @@ class Questions extends React.Component {
           difficulty:this.state.difficulty
         }
       });
-      console.log(response);
       //check if response is successful
       if(response.status === 200) {
         this.setState({questions:response.data.results,isSubmit:true,score:0})
       }
     } catch (err) {
-      this.setState({questions:[],score:0,isSubmit:true,isError:true})
+      this.setState({questions:[],score:0,isSubmit:false,isError:true})
     }
   }
 
@@ -39,14 +38,14 @@ class Questions extends React.Component {
   }
 
   render() {
-        console.log(this.state.isError);
+        //set up message in case the this site can't reach server
         let message;
         if(this.state.isError) {
           message = 'There is an issue with the server, please try again later';
         } else {
           message = 'Please choose a difficulty and click "Load Questions" button to display the questions. Enjoy!';
         }
-
+        console.log(message)
         return(
           <div className="App">
             <ScoreBoard score={this.state.score}/>
