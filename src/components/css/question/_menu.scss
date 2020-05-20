@@ -21,6 +21,11 @@
 
 .btn-group {
   margin-left: 2rem;
+  @include respond(tab-land) {
+    margin-left:2rem;
+    margin-top:1rem;
+    width: 75vw;
+  }
   .btn {
     width: 6rem;
     text-align: center;
