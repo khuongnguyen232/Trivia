@@ -25,6 +25,7 @@ class QuestionCard extends React.Component {
     this.setState({answerList:shuffle(tempList)});
   }
 
+  //check if the answer correct - +1 to score if it is. Also, +1 to number of answer everytime
   checkAnswer= (event) => {
     if(event.target.textContent === convert(this.props.question.correct_answer)) {
       event.target.className += ' card__answer--true';
@@ -32,6 +33,7 @@ class QuestionCard extends React.Component {
     } else {
       event.target.className += ' card__answer--false';
     }
+    this.props.addNumAnswer();
     this.setState({isAnswered:true});
   };
 

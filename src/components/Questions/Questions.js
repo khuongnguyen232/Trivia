@@ -7,7 +7,10 @@ import Menu from './Menu';
 
 class Questions extends React.Component {
   //only display question when isSubmit is true
-  state= {questions:[], score:0,difficulty:null,isSubmit:false,isError:false};
+  //numAnswer is number of question that user answer
+  //difficulty will be included inside the APi call
+  //isSubmit and isError to determine the text to display on front page
+  state= {questions:[], score:0,numAnswer:0,difficulty:null,isSubmit:false,isError:false};
 
   getQuestions = async () => {
     try {
@@ -19,10 +22,10 @@ class Questions extends React.Component {
       });
       //check if response is successful
       if(response.status === 200) {
-        this.setState({questions:response.data.results,isSubmit:true,score:0})
+        this.setState({questions:response.data.results,score:0,numAnswer:0,isSubmit:true})
       }
     } catch (err) {
-      this.setState({questions:[],score:0,isSubmit:false,isError:true})
+      this.setState({questions:[],score:0,numAnswer:0,isSubmit:false,isError:true})
     }
   }
 
@@ -37,7 +40,12 @@ class Questions extends React.Component {
     this.setState({score:this.state.score + 1});
   }
 
+  addNumAnswer = () => {
+    this.setState({numAnswer:this.state.numAnswer + 1});
+  }
+
   render() {
+    console.log(this.state.numAnswer);
         //set up message in case the this site can't reach server
         let message;
         if(this.state.isError) {
@@ -45,13 +53,13 @@ class Questions extends React.Component {
         } else {
           message = 'Please choose a difficulty and click "Load Questions" button to display the questions. Enjoy!';
         }
-        console.log(message)
+        //console.log(message)
         return(
           <div className="App">
             <ScoreBoard score={this.state.score}/>
             <Menu getQuestions={this.getQuestions} changeDifficulty={this.changeDifficulty}/>
             {this.state.isSubmit?
-              <QuestionList list={this.state.questions} addScore={this.addScore}/>:
+              <QuestionList list={this.state.questions} addScore={this.addScore} addNumAnswer={this.addNumAnswer}/>:
               <div className="init-message">{message}</div>
             }
           </div>
