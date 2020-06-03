@@ -3,6 +3,7 @@ import APIs from '../api';
 
 import QuestionList from './QuestionList';
 import ScoreBoard from './ScoreBoard';
+import Modal from './Modal';
 import Menu from './Menu';
 
 class Questions extends React.Component {
@@ -61,6 +62,8 @@ class Questions extends React.Component {
             {this.state.isSubmit?
               <QuestionList list={this.state.questions} addScore={this.addScore} addNumAnswer={this.addNumAnswer}/>:
               <div className="init-message">{message}</div>
+            }
+            {this.state.numAnswer >= 10 && <Modal correctAnswers={this.state.score} getQuestions={this.getQuestions}/>
             }
           </div>
     )
