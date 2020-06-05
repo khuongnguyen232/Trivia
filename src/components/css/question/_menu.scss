@@ -3,6 +3,9 @@
   width:100%;
   padding-top: 8rem;
   display: block;
+  @include respond(tab-land) {
+    padding-top: 12rem;
+  }
 }
 
 .menu__load {

@@ -7,7 +7,7 @@
   }
 
   &__section {
-    position: absolute;
+    position: fixed;
     background-color: white;
     width:30vw;
     height:25vh;
@@ -21,6 +21,7 @@
     }
 
     @include respond(tab-port) {
+      height:30vh;
       width: 75%;
     }
   }
@@ -34,6 +35,10 @@
     border-bottom:1px black solid;
     height: 20%;
     width:100%;
+
+    @include respond(tab-port) {
+      font-size:2.5rem;
+    }
   }
 
   &__text {
@@ -43,6 +48,10 @@
     font-size: 2.5rem;
     color:#828282;
     height: 60%;
+
+    @include respond(tab-port) {
+      font-size:2rem;
+    }
   }
 
   &__button {
@@ -52,7 +61,7 @@
 
     button {
       height: 100%;
-      width:30%;
+      width:35%;
       margin-left: 50%;
       transform: translateX(-50%);
       font-size: 1.5rem;
@@ -60,6 +69,13 @@
       color:$color-white;
       border-color:$color-blue;
       border-radius: 0.3rem;
+
+      @include respond(tab-port) {
+        width: 50%;
+      }
+      @include respond(phone) {
+        width: 70%;
+      }
     }
   }
 }
