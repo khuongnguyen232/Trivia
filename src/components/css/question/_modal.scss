@@ -7,12 +7,12 @@
   }
 
   &__section {
+    position: absolute;
     background-color: white;
     width:30vw;
-    height:20vh;
+    height:25vh;
     border: 2px black solid;
     border-radius:5px;
-    position: fixed;
     top:50%;
     left:50%;
     transform: translate(-50%, -50%);
@@ -28,21 +28,21 @@
   &__title {
     padding-left: 5%;
     text-transform: capitalize;
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: bold;
     letter-spacing: 2px;
     border-bottom:1px black solid;
-    height: 30%;
+    height: 20%;
     width:100%;
   }
 
   &__text {
-    padding-top:2%;
     text-align: center;
+    padding-top:2%;
     width:100%;
-    font-size: 2rem;
+    font-size: 2.5rem;
     color:#828282;
-    height: 50%;
+    height: 60%;
   }
 
   &__button {
@@ -56,6 +56,10 @@
       margin-left: 50%;
       transform: translateX(-50%);
       font-size: 1.5rem;
+      background-color: $color-blue;
+      color:$color-white;
+      border-color:$color-blue;
+      border-radius: 0.3rem;
     }
   }
 }
