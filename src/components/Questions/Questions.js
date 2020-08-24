@@ -34,6 +34,7 @@ class Questions extends React.Component {
   changeDifficulty = (event) => {
     //console.log(event.target.value);
     this.setState({difficulty:event.target.value});
+    this.getQuestions();
   }
 
 
@@ -51,7 +52,7 @@ class Questions extends React.Component {
         if(this.state.isError) {
           message = 'There is an issue with the server, please try again later';
         } else {
-          message = 'Please choose a difficulty and click "Load Questions" button to display the questions. Enjoy!';
+          message = 'Please choose a difficulty to display the questions. Enjoy!';
         }
         //console.log(message)
         return(
