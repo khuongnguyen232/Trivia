@@ -3,14 +3,13 @@ import React from 'react';
 const Menu = ({getQuestions,changeDifficulty}) => {
   return(
     <div className="menu__section">
-      <button className="btn btn-primary menu__load btn-lg" onClick={getQuestions}>Load questions</button>
-
-      <div className="btn-group btn-group-toggle" data-toggle="buttons">
+      <div className="grid-container" data-toggle="buttons">
         <div className="text-light menu__label">Difficulty</div>
         <button className="btn btn-outline-light btn-lg" onClick={changeDifficulty} value={null}>All</button>
         <button className="btn btn-outline-light btn-lg" onClick={changeDifficulty} value='easy'>Easy</button>
         <button className="btn btn-outline-light btn-lg " onClick={changeDifficulty} value='medium'>Medium</button>
         <button className="btn btn-outline-light btn-lg" onClick={changeDifficulty} value='hard'>Hard</button>
+        <button className="btn btn-primary btn-outline-light menu__load" onClick={getQuestions}>Load questions</button>
       </div>
     </div>
   );

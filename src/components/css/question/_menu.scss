@@ -1,24 +1,45 @@
-.menu__section {
-  top:0;
-  width:100%;
-  padding-top: 8rem;
-  display: block;
-  @include respond(tab-land) {
-    padding-top: 12rem;
-  }
-}
-
-.menu__load {
-  transform: scale(1.2);
-  margin-left: 2rem;
+.grid-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-auto-rows: 5rem;
 }
 
 .menu {
+
+  &__section {
+    top:0;
+    width:100%;
+    padding-top: 6rem;
+    display: block;
+    @include respond(tab-land) {
+      padding-top: 12rem;
+    }
+  }
+
   &__label {
-    font-size: 1.5rem;
-    display: inline-block;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start:1;
+    grid-row-end: 2;
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: 1.5rem;
+    text-transform: uppercase;
+
+    text-align: center;
     padding: 1rem 0;
-    margin: 0 1rem;
+  }
+
+  &__load {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start:3;
+
+    font-size: 3rem !important;
+    font-weight: bold;
+    letter-spacing: 1rem;
+    text-transform: uppercase;
   }
 }
 
