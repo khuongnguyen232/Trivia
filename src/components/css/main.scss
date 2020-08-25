@@ -1,9 +1,9 @@
-@import "App/app";
-
 @import "base/base";
 @import "base/variable";
 @import "base/spinner";
 @import "base/mixin";
+
+@import "App/app";
 
 @import "question/questions";
 @import "question/question_card";
