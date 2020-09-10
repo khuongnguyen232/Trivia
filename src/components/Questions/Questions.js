@@ -5,6 +5,7 @@ import QuestionList from './QuestionList';
 import ScoreBoard from './ScoreBoard';
 import Modal from './Modal';
 import Menu from './Menu';
+import category from './category.js';
 
 class Questions extends React.Component {
   //only display question when isSubmit is true
@@ -47,27 +48,27 @@ class Questions extends React.Component {
   }
 
   render() {
-        //set up message in case the this site can't reach server
-        let message;
-        if(this.state.isError) {
-          message = 'There is an issue with the server, please try again later';
-        } else {
-          message = 'Please choose a difficulty to display the questions. Enjoy!';
+    //set up message in case the this site can't reach server
+    let message;
+    if(this.state.isError) {
+      message = 'There is an issue with the server, please try again later';
+    } else {
+      message = 'Please choose a difficulty to display the questions. Enjoy!';
+    }
+    //console.log(message)
+    return(
+      <div className="App">
+        <ScoreBoard score={this.state.score}/>
+        <Menu getQuestions={this.getQuestions} changeDifficulty={this.changeDifficulty}/>
+        {this.state.isSubmit?
+          <QuestionList list={this.state.questions} addScore={this.addScore} addNumAnswer={this.addNumAnswer}/>:
+          <React.Fragment>
+            <div className="init-message">{message}</div>
+          </React.Fragment>
         }
-        //console.log(message)
-        return(
-          <div className="App">
-            <ScoreBoard score={this.state.score}/>
-            <Menu getQuestions={this.getQuestions} changeDifficulty={this.changeDifficulty}/>
-            {this.state.isSubmit?
-              <QuestionList list={this.state.questions} addScore={this.addScore} addNumAnswer={this.addNumAnswer}/>:
-              <React.Fragment>
-                <div className="init-message">{message}</div>
-              </React.Fragment>
-            }
-            {this.state.numAnswer >= 10 && <Modal correctAnswers={this.state.score} getQuestions={this.getQuestions}/>
-            }
-          </div>
+        {this.state.numAnswer >= 10 && <Modal correctAnswers={this.state.score} getQuestions={this.getQuestions}/>
+        }
+      </div>
     )
   };
 };
