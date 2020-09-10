@@ -10,6 +10,7 @@
   width:100%;
   grid-column-start: 1;
   grid-column-end: 5;
+  gap: 2rem;
   margin-left: 0;
 }
 
@@ -51,11 +52,17 @@
   .btn {
     width: 6rem;
     text-align: center;
-    transform: all .2s;
+    color: $color-pewter;
+    font-size: 2.5rem;
+    text-transform: uppercase;
 
     &:focus {
       background-color: $color-white;
       color: $color-black;
+    }
+
+    @include respond(tab-port) {
+      font-size: 1.5rem;
     }
   }
 }
