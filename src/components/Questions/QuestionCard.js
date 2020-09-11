@@ -22,8 +22,17 @@ class QuestionCard extends React.Component {
   componentDidMount() {
     let tempList = this.props.question.incorrect_answers;;
     tempList.push(this.props.question.correct_answer);
-    this.setState({answerList:shuffle(tempList)});
+    this.setState({isAnswered:false,answerList:shuffle(tempList)});
   }
+
+  componentDidUpdate(prevProps) {
+  // Typical usage (don't forget to compare props):
+  if (this.props.question !== prevProps.question) {
+    let tempList = this.props.question.incorrect_answers;;
+    tempList.push(this.props.question.correct_answer);
+    this.setState({isAnswered:false,answerList:shuffle(tempList)});
+  }
+}
 
   //check if the answer correct - +1 to score if it is. Also, +1 to number of answer everytime
   checkAnswer= (event) => {

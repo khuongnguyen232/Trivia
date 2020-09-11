@@ -14,7 +14,7 @@ If you want to run this locally, please follow these steps (assuming NodeJS is i
 And the window of this web app should pop up on your browser at localhost:3000.
 
 ## Hosted Site
-I already hosted the website on Heroku, if you want to have a sneak peak at the project, please check out here:
+I already hosted the website on Heroku, if you want to have a small look at it please check out here:
 https://trivia-khuong.herokuapp.com/
 
 ## Update#1 (06/17/2020)
