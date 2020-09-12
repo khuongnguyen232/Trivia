@@ -12,6 +12,7 @@ function convert(str)
   str = str.replace(new RegExp("&#039;",'g'),"'");
   str = str.replace(new RegExp("&ldquo;",'g'),"“");
   str = str.replace(new RegExp("&rdquo;",'g'),"”");
+  str = str.replace(new RegExp("&eacute;", 'g'), "é");
 
   return _.unescape(str);
 }
@@ -54,56 +55,39 @@ class QuestionCard extends React.Component {
     if(!question) {
       return <div>Loading data ... </div>
     } else {
+
+      //use this to init class => otherwise the site will remember the modified class after answered;
+      const initClass = "card__answer";
+
       //function to display a list - array cacn be answerList or booleanList
       const displayList = (array) => {
         return array.map( (answer,index) => {
           if(!this.state.isAnswered) {
-            return <button key={answer} className="card__answer" onClick={this.checkAnswer}>{convert(answer)}</button>
+            return <button key={answer} className={initClass} onClick={this.checkAnswer}>{convert(answer)}</button>
           }
           else {
-            return <button key={answer} className="card__answer" disabled>{convert(answer)}</button>
+            return <button key={answer} className={initClass} disabled>{convert(answer)}</button>
           }
         })
-      }
+      };
 
-      if(question.type === "multiple") {
-        return(
-          <div className="card">
-            <div className="card__question">{convert(question.question)}</div>
-            <div className="card__answer-list">
-              {displayList(this.state.answerList)}
-            </div>
-
-            { //display answer after click buttons
-              this.state.isAnswered? (
-                <div>
-                  Answer: {convert(question.correct_answer)}
-                </div>
-              ):<React.Fragment></React.Fragment>
-            }
-            <br />
+      return(
+        <div className="card">
+          <div className="card__question">{convert(question.question)}</div>
+          <div className="card__answer-list">
+            {displayList(this.state.answerList)}
           </div>
-        );
-      }
 
-      if(question.type === "boolean") {
-        return(
-          <div className="card">
-            <div className="card__question">{convert(question.question)}</div>
-            <div className="card__answer-list">
-              {displayList(this.state.booleanList)}
-            </div>
-            <br />
-            { //display answer after click buttons
-              this.state.isAnswered? (
-                <div>
-                  Answer: {convert(question.correct_answer)}
-                </div>
-              ):<React.Fragment></React.Fragment>
-            }
-          </div>
-        );
-      }
+          { //display answer after click buttons
+            this.state.isAnswered? (
+              <div>
+                Answer: {convert(question.correct_answer)}
+              </div>
+            ):<React.Fragment></React.Fragment>
+          }
+          <br />
+        </div>
+      );
     };
   }
 };
