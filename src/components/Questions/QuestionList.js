@@ -7,7 +7,7 @@ const QuestionList = ({list,addScore,addNumAnswer}) => {
     return <div>Loading data ... </div>
   } else {
     const displayList = list.map( (question, index) => {
-      return <QuestionCard question={question} key={index} addScore={addScore} addNumAnswer={addNumAnswer}/>
+      return <QuestionCard question={question} key={question.question} addScore={addScore} addNumAnswer={addNumAnswer}/>
     })
     return(
         <div className="list-section">

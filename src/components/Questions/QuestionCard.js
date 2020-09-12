@@ -17,8 +17,10 @@ function convert(str)
   return _.unescape(str);
 }
 
+//we have 3 props here question, addScore(), addNumAnswer()
+
 class QuestionCard extends React.Component {
-  state={isAnswered:false, answerList:[], booleanList:['True','False']};
+  state={isAnswered:false, isCorrect:null, answerList:[]};
 
   resetAnswerList = () => {
     const tempList = this.props.question.incorrect_answers;;
@@ -39,11 +41,12 @@ class QuestionCard extends React.Component {
 
   //check if the answer correct - +1 to score if it is. Also, +1 to number of answer everytime
   checkAnswer= (event) => {
+
     if(event.target.textContent === convert(this.props.question.correct_answer)) {
-      event.target.className += ' card__answer--true';
+      this.setState({isCorrect:true})
       this.props.addScore();
     } else {
-      event.target.className += ' card__answer--false';
+      this.setState({isCorrect:false})
     }
     this.props.addNumAnswer();
     this.setState({isAnswered:true});
@@ -56,24 +59,28 @@ class QuestionCard extends React.Component {
       return <div>Loading data ... </div>
     } else {
 
-      //use this to init class => otherwise the site will remember the modified class after answered;
-      const initClass = "card__answer";
-
-      //function to display a list - array cacn be answerList or booleanList
+      //function to display a list - array cacn be answerList
       const displayList = (array) => {
         return array.map( (answer,index) => {
           if(!this.state.isAnswered) {
-            return <button key={answer} className={initClass} onClick={this.checkAnswer}>{convert(answer)}</button>
-          }
-          else {
-            return <button key={answer} className={initClass} disabled>{convert(answer)}</button>
+            return <button key={answer} className="card__answer" onClick={this.checkAnswer}>{convert(answer)}</button>
+          } else {
+            return <button key={answer} className="card__answer" disabled>{convert(answer)}</button>
           }
         })
       };
 
+      let initQuestionClass = "card__question";
+      if(this.state.isAnswered && this.state.isCorrect) {
+        initQuestionClass = "card__question card__question--true";
+      }
+      else if(this.state.isAnswered && !this.state.isCorrect) {
+        initQuestionClass = "card__question card__question--false";
+      }
+
       return(
         <div className="card">
-          <div className="card__question">{convert(question.question)}</div>
+          <div className={initQuestionClass}>{convert(question.question)}</div>
           <div className="card__answer-list">
             {displayList(this.state.answerList)}
           </div>
