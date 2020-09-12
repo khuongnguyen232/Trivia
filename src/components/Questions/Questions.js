@@ -73,7 +73,7 @@ class Questions extends React.Component {
         <ScoreBoard score={this.state.score}/>
         <Menu getQuestions={this.getQuestions} changeDifficulty={this.changeDifficulty}/>
         <CategoryList changeSubject={this.changeSubject}/>
-        <button onClick={this.getQuestions}> Get ? </button>
+        <button onClick={this.getQuestions}>Get ? </button>
         {this.state.isSubmit?
           <QuestionList list={this.state.questions} addScore={this.addScore} addNumAnswer={this.addNumAnswer}/>:
           <React.Fragment>

@@ -19,18 +19,20 @@ function convert(str)
 class QuestionCard extends React.Component {
   state={isAnswered:false, answerList:[], booleanList:['True','False']};
 
-  componentDidMount() {
-    let tempList = this.props.question.incorrect_answers;;
+  resetAnswerList = () => {
+    const tempList = this.props.question.incorrect_answers;;
     tempList.push(this.props.question.correct_answer);
     this.setState({isAnswered:false,answerList:shuffle(tempList)});
+  }
+
+  componentDidMount() {
+    this.resetAnswerList();
   }
 
   componentDidUpdate(prevProps) {
   // Typical usage (don't forget to compare props):
   if (this.props.question !== prevProps.question) {
-    let tempList = this.props.question.incorrect_answers;;
-    tempList.push(this.props.question.correct_answer);
-    this.setState({isAnswered:false,answerList:shuffle(tempList)});
+    this.resetAnswerList();
   }
 }
 
@@ -52,13 +54,14 @@ class QuestionCard extends React.Component {
     if(!question) {
       return <div>Loading data ... </div>
     } else {
+      //function to display a list - array cacn be answerList or booleanList
       const displayList = (array) => {
-        return array.map( (answer) => {
+        return array.map( (answer,index) => {
           if(!this.state.isAnswered) {
             return <button key={answer} className="card__answer" onClick={this.checkAnswer}>{convert(answer)}</button>
           }
           else {
-            return <button key={answer} className="card__answer" disabled onClick={this.checkAnswer}>{convert(answer)}</button>
+            return <button key={answer} className="card__answer" disabled>{convert(answer)}</button>
           }
         })
       }
