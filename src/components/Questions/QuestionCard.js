@@ -7,8 +7,7 @@ function shuffle(array) {
 }
 
 //use to convert special character to sign - exmaple: &ldquo; => “
-function convert(str)
-{
+function convert(str) {
   str = str.replace(new RegExp("&#039;",'g'),"'");
   str = str.replace(new RegExp("&ldquo;",'g'),"“");
   str = str.replace(new RegExp("&rdquo;",'g'),"”");
@@ -43,9 +42,11 @@ class QuestionCard extends React.Component {
   checkAnswer= (event) => {
 
     if(event.target.textContent === convert(this.props.question.correct_answer)) {
+      event.target.className += " card__answer--true";
       this.setState({isCorrect:true})
       this.props.addScore();
     } else {
+      event.target.className += " card__answer--false";
       this.setState({isCorrect:false})
     }
     this.props.addNumAnswer();
@@ -70,6 +71,7 @@ class QuestionCard extends React.Component {
         })
       };
 
+      //declare the class for card__question depend on the correctness of the user answer
       let initQuestionClass = "card__question";
       if(this.state.isAnswered && this.state.isCorrect) {
         initQuestionClass = "card__question card__question--true";
@@ -80,7 +82,10 @@ class QuestionCard extends React.Component {
 
       return(
         <div className="card">
-          <div className={initQuestionClass}>{convert(question.question)}</div>
+          <div className={initQuestionClass}>
+            {convert(question.question)}
+          </div>
+
           <div className="card__answer-list">
             {displayList(this.state.answerList)}
           </div>
