@@ -2,10 +2,10 @@
 
 
 
-
 //this will be include as a list of category
 //each category is align with their assosiate category id (for example General Knowledge is category #9)
 const category = [
+  'All',
   'General Knowledge',
   'Books',
   'Film',

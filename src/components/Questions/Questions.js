@@ -5,21 +5,26 @@ import QuestionList from './QuestionList';
 import ScoreBoard from './ScoreBoard';
 import Modal from './Modal';
 import Menu from './Menu';
+<<<<<<< HEAD
 import category from './category.js';
+=======
+import CategoryList from './CategoryList';
+>>>>>>> temp
 
 class Questions extends React.Component {
   //only display question when isSubmit is true
   //numAnswer is number of question that user answer
-  //difficulty will be included inside the APi call
+  //difficulty and category will be included inside the APi call
   //isSubmit and isError to determine the text to display on front page
-  state= {questions:[],score:0,numAnswer:0,difficulty:null,isSubmit:false,isError:false};
+  state= {questions:[], score:0, numAnswer:0, difficulty:null, isSubmit:false, isError:false, category: null};
 
   getQuestions = async () => {
     try {
       const response = await APIs.get('./', {
         params: {
           amount:10,
-          difficulty:this.state.difficulty
+          difficulty:this.state.difficulty,
+          category: this.state.category
         }
       });
       //check if response is successful
@@ -34,10 +39,20 @@ class Questions extends React.Component {
   //input will be a text for which difficulty to load (easy, medium, hard)
   changeDifficulty = (event) => {
     //console.log(event.target.value);
-    this.setState({difficulty:event.target.value});
-    this.getQuestions();
+    this.setState({difficulty:event.target.value}, () => {
+      this.getQuestions();
+    });
   }
 
+  changeSubject = (event) => {
+    const categoryId = event.target.value;
+    if(categoryId > 8) {
+      this.setState({category:event.target.value});
+    } else {
+      this.setState({category:null});
+    }
+
+  }
 
   addScore = () => {
     this.setState({score:this.state.score + 1});
@@ -48,6 +63,7 @@ class Questions extends React.Component {
   }
 
   render() {
+    //console.log(this.state.questions)
     //set up message in case the this site can't reach server
     let message;
     if(this.state.isError) {
@@ -60,6 +76,8 @@ class Questions extends React.Component {
       <div className="App">
         <ScoreBoard score={this.state.score}/>
         <Menu getQuestions={this.getQuestions} changeDifficulty={this.changeDifficulty}/>
+        <CategoryList changeSubject={this.changeSubject}/>
+        <button onClick={this.getQuestions}>Get ? </button>
         {this.state.isSubmit?
           <QuestionList list={this.state.questions} addScore={this.addScore} addNumAnswer={this.addNumAnswer}/>:
           <React.Fragment>

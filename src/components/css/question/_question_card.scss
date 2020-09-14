@@ -22,7 +22,18 @@
   &__question {
     border-bottom: 1px dotted $color-white;
     padding: 10px;
+
+    &--true {
+      background: $color-green;
+      color:$color-black;
+    }
+
+    &--false {
+      background: $color-red;
+      color:$color-black;
+    }
   }
+
 
   &__answer-list {
     position: relative;
