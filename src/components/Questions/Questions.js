@@ -5,11 +5,7 @@ import QuestionList from './QuestionList';
 import ScoreBoard from './ScoreBoard';
 import Modal from './Modal';
 import Menu from './Menu';
-<<<<<<< HEAD
-import category from './category.js';
-=======
 import CategoryList from './CategoryList';
->>>>>>> temp
 
 class Questions extends React.Component {
   //only display question when isSubmit is true

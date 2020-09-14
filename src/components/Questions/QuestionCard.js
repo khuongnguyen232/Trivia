@@ -41,16 +41,16 @@ class QuestionCard extends React.Component {
   //check if the answer correct - +1 to score if it is. Also, +1 to number of answer everytime
   checkAnswer= (event) => {
 
+    //temporary disable display color after answering
     if(event.target.textContent === convert(this.props.question.correct_answer)) {
-      event.target.className += " card__answer--true";
-      this.setState({isCorrect:true})
+      //event.target.className += " card__answer--true";
+      this.setState({isAnswered:true,isCorrect:true})
       this.props.addScore();
     } else {
-      event.target.className += " card__answer--false";
-      this.setState({isCorrect:false})
+      //event.target.className += " card__answer--false";
+      this.setState({isAnswered:true,isCorrect:false})
     }
     this.props.addNumAnswer();
-    this.setState({isAnswered:true});
   };
 
 
