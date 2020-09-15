@@ -1,16 +1,15 @@
 import React from 'react';
+import CategoryList from './CategoryList';
+import DifCategory from './DifCategory';
 
-const Menu = ({getQuestions,changeDifficulty}) => {
+const Menu = ({getQuestions,changeDifficulty,changeSubject}) => {
   return(
     <div className="menu__section">
       <div className="grid-container" data-toggle="buttons">
         <div className="text-light menu__label">Choose Difficulty</div>
-        <div className="btn-group">
-          <button className="btn btn-outline-light btn-lg" onClick={changeDifficulty} value={null}>All</button>
-          <button className="btn btn-outline-light btn-lg" onClick={changeDifficulty} value='easy'>Easy</button>
-          <button className="btn btn-outline-light btn-lg " onClick={changeDifficulty} value='medium'>Medium</button>
-          <button className="btn btn-outline-light btn-lg" onClick={changeDifficulty} value='hard'>Hard</button>
-        </div>
+        <DifCategory className= "btn btn-outline-light btn-lg menu--difcategory" changeSubject={changeSubject} />
+        <CategoryList className= "btn btn-outline-light btn-lg menu--category" changeSubject={changeSubject}/>
+        <button className="btn btn-outline-light btn-lg menu--reset" onClick={getQuestions}>Load Question </button>
       </div>
     </div>
   );

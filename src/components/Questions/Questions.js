@@ -5,7 +5,6 @@ import QuestionList from './QuestionList';
 import ScoreBoard from './ScoreBoard';
 import Modal from './Modal';
 import Menu from './Menu';
-import CategoryList from './CategoryList';
 
 class Questions extends React.Component {
   //only display question when isSubmit is true
@@ -35,9 +34,7 @@ class Questions extends React.Component {
   //input will be a text for which difficulty to load (easy, medium, hard)
   changeDifficulty = (event) => {
     //console.log(event.target.value);
-    this.setState({difficulty:event.target.value}, () => {
-      this.getQuestions();
-    });
+    this.setState({difficulty:event.target.value});
   }
 
   changeSubject = (event) => {
@@ -71,9 +68,7 @@ class Questions extends React.Component {
     return(
       <div className="App">
         <ScoreBoard score={this.state.score}/>
-        <Menu getQuestions={this.getQuestions} changeDifficulty={this.changeDifficulty}/>
-        <CategoryList changeSubject={this.changeSubject}/>
-        <button onClick={this.getQuestions}>Get ? </button>
+        <Menu getQuestions={this.getQuestions} changeDifficulty={this.changeDifficulty} changeSubject={this.changeSubject}/>
         {this.state.isSubmit?
           <QuestionList list={this.state.questions} addScore={this.addScore} addNumAnswer={this.addNumAnswer}/>:
           <React.Fragment>
