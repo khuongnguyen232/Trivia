@@ -16,6 +16,7 @@
 }
 
 .menu {
+
   &__section {
     top:0;
     width:100%;
@@ -51,24 +52,27 @@
   &--reset {
     grid-row-start: 3;
     grid-row-end: 4;
-
     grid-column-start: 1;
     grid-column-end: 5;
+
+    font-size: 2.5rem !important;
   }
 
   &--difcategory {
     grid-row-start: 2;
     grid-row-end: 3;
-
     grid-column-start: 1;
     grid-column-end: 3;
+
+    font-size: 2.5rem !important;
   }
 
   &--category {
     grid-row-start: 2;
     grid-row-end: 3;
-
     grid-column-start: 3;
     grid-column-end: 5;
+
+    font-size: 2.5rem !important;
   }
 }

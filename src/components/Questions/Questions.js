@@ -62,7 +62,7 @@ class Questions extends React.Component {
     if(this.state.isError) {
       message = 'There is an issue with the server, please try again later';
     } else {
-      message = 'Please choose a difficulty to display the questions. Enjoy!';
+      message = 'Please choose a difficulty and a category to start the quiz now. Enjoy!';
     }
     //console.log(message)
     return(
