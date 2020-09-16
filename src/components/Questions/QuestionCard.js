@@ -66,7 +66,7 @@ class QuestionCard extends React.Component {
           if(!this.state.isAnswered) {
             return <button key={answer} className="card__answer" onClick={this.checkAnswer}>{convert(answer)}</button>
           } else {
-            return <button key={answer} className="card__answer" disabled>{convert(answer)}</button>
+            return <button key={answer} className="card__answer" disabled>{convert(answer) }</button>
           }
         })
       };
@@ -92,7 +92,7 @@ class QuestionCard extends React.Component {
 
           { //display answer after click buttons
             this.state.isAnswered? (
-              <div>
+              <div className="card__final-answer">
                 Answer: {convert(question.correct_answer)}
               </div>
             ):<React.Fragment></React.Fragment>
