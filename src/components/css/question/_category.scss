@@ -1,0 +1,8 @@
+//note: category is a child of button group in menu(which is display:grid)
+.category {
+  grid-row-start: 3;
+  grid-row-end: 4;
+
+  grid-column-start: 1;
+  grid-column-end: 3;
+}

@@ -6,7 +6,6 @@
   border-radius: 5px;
 
   width: 50%;
-  color:$color-pewter;
   background-image:url('../static/starbackground.jpg');
 
   //the last element doesn't need 2% margin,(but still need to center);
@@ -20,24 +19,53 @@
   }
 
   &__question {
-    border-bottom: 1px dotted $color-white;
+    border: 1px solid $color-white;
+    color:$color-white;
+    background-color: $color-black;
     padding: 10px;
 
     &--true {
-      background: $color-green;
+      background-color: $color-green;
       color:$color-black;
+      animation: turnGreen 1s;
     }
 
     &--false {
-      background: $color-red;
+      background-color: $color-red;
       color:$color-black;
+      animation: turnRed 1s;
+    }
+
+    @keyframes turnGreen {
+      from {
+        background-color: $color-black;
+        color:$color-white;
+      }
+      to {
+        background-color: $color-green;
+        color:$color-black;
+      }
+    }
+
+    @keyframes turnRed {
+      from {
+        background-color: $color-black;
+        color:$color-white;
+      }
+      to {
+        background-color: $color-red;
+        color:$color-black;
+      }
     }
   }
-
 
   &__answer-list {
     position: relative;
     padding: 1rem;
+  }
+
+  &__final-answer {
+    color:$color-white;
   }
 
   &__answer {
